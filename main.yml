@@ -29,6 +29,8 @@
     - name: get gerrit jar file
       get_url:
         url: https://gerrit-releases.storage.googleapis.com/gerrit-3.0.0.war
-        dest: /opt/gerrit-3.0.0.war
+        dest: /root/gerrit-3.0.0.war
+    - name: export
+      shell: export GERRIT_SITE=~/gerrit_testsite
     - name: executing jar file
-      shell: java -jar /opt/gerrit-3.0.0.war init -d /gerrit
+      shell: java -jar gerrit*.war init --batch --dev -d $GERRIT_SITE
