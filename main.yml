@@ -33,4 +33,4 @@
     - name: export
       shell: export GERRIT_SITE=~/gerrit_testsite
     - name: executing jar file
-      shell: java -jar gerrit*.war init --batch --dev -d $GERRIT_SITE
+      shell: java -jar gerrit-3.0.0.war init --batch --dev -d $GERRIT_SITE
