@@ -28,7 +28,9 @@
         executable: /bin/bash
     - name: get gerrit jar file
       get_url:
-        url: https://gerrit-releases.storage.googleapis.com/gerrit-3.0.0.war
-        dest: /root/gerrit-3.0.0.war
+        url: https://gerrit-releases.storage.googleapis.com/gerrit-2.15.5.war
+        dest: /root/gerrit-2.15.5.war
     - name: executing jar file
-      shell: java -jar /root/gerrit-3.0.0.war init --batch --dev -d /gerrit_workspsce
+      shell: java -jar /root/gerrit-2.15.5.war init --batch --dev -d /gerrit_workspsce --install-all-plugins
+    - name: restart gerrit service
+      shell: sh /gerrit_workspsce/bin/ ./gerrit.sh restart
