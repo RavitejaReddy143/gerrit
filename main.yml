@@ -31,6 +31,8 @@
         url: https://gerrit-releases.storage.googleapis.com/gerrit-2.15.5.war
         dest: /root/gerrit-2.15.5.war
     - name: executing jar file
-      shell: java -jar /root/gerrit-2.15.5.war init --batch --dev -d /gerrit_workspsce --install-all-plugins
+      shell: java -jar /root/gerrit-2.15.5.war init --batch --dev -d /gerrit_workspsce --install-all-plugins --no-auto-start
+    - name: replace
+      template: src= gerrit.config dest=/gerrit_workspsce/etc/gerrit.config
     - name: restart gerrit service
       shell: sh /gerrit_workspsce/bin/ ./gerrit.sh restart
